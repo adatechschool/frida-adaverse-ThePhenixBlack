@@ -1,4 +1,4 @@
-// app/page.tsx
+import Link from "next/link";
 import { db } from "@/db"; // adapte le chemin si besoin
 import { student_projects, promotions, ada_projects } from "@/db/schema";
 import { eq, isNotNull, desc } from "drizzle-orm";
@@ -42,13 +42,21 @@ export default async function HomePage() {
         ) : (
           <ul className="space-y-2">
             {projects.map((project) => (
-              <li key={project.id} className="border rounded-lg p-3">
-                <div className="font-semibold">{project.title}</div>
-                <div className="text-xs text-neutral-500">
-                  {project.adaProjectName} · {project.promotionName}
-                </div>
-              </li>
-            ))}
+  <li
+    key={project.id}
+    className="border rounded-lg p-3 hover:bg-neutral-50 transition"
+  >
+    <Link href={`/projects/${project.slug}`} className="block space-y-1">
+      <div className="font-semibold">{project.title}</div>
+      <div className="text-xs text-neutral-500">
+        {project.adaProjectName} · {project.promotionName}
+      </div>
+      <div className="text-[11px] text-neutral-400">
+        slug: {String(project.slug)}
+      </div>
+    </Link>
+  </li>
+))}
           </ul>
         )}
       </section>
