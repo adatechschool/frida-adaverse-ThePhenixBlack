@@ -1,6 +1,41 @@
-import { pgTable, serial, text } from "drizzle-orm/pg-core";
+import { time } from "console";
 
-export const testTable = pgTable("test_table", {
+import {
+  pgTable,
+  serial,
+  text,
+  timestamp,
+  date,
+  integer,
+} from "drizzle-orm/pg-core";
+
+export const ada_projects = pgTable("ada_projects", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
+});
+
+export const promotions = pgTable("promotions", {
+    id: serial("id").primaryKey(),
+    name: text("name").notNull(),
+    startDate: date("start_date").notNull(),
+
+});
+
+export const student_projects = pgTable("student_projects", {
+    id: serial("id").primaryKey(),
+    title: text("title").notNull(),
+    slug: text("slug").notNull(),
+    githubUrl: text("github_url").notNull(),
+    demoUrl: text("demo_url").notNull(),
+
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    publishedAt: timestamp("published_at"),
+
+    promotionId: integer("promotion_id")
+    .notNull()
+    .references(()=>promotions.id),
+
+    adaProjectId: integer("ada_project_id")
+    .notNull()
+    .references(()=>ada_projects.id),
 });

@@ -8,6 +8,20 @@
       "when": 1764062212640,
       "tag": "0000_next_gorilla_man",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1764066868877,
+      "tag": "0001_charming_malice",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1764067598288,
+      "tag": "0002_plain_the_stranger",
+      "breakpoints": true
     }
   ]
 }
