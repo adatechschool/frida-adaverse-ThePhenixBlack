@@ -43,9 +43,14 @@ export default async function ProjectPage(props: ProjectPageProps) {
 
       <section className="border rounded-lg p-4 text-sm text-neutral-700">
         <p>
-          Ici tu pourras afficher plus d&apos;infos du projet
-          (description, liens, stack, etc.) quand on les aura dans la DB.
+            {project.publishedAt && new Date(project.publishedAt).toLocaleDateString("fr-FR")}
         </p>
+        <p>
+    Stacks utilisées :
+    <span className="ml-1 text-black font-medium">
+      {project.stacks}
+    </span>
+  </p>
       </section>
     </main>
   );

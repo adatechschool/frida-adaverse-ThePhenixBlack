@@ -22,20 +22,21 @@ export const promotions = pgTable("promotions", {
 });
 
 export const student_projects = pgTable("student_projects", {
-    id: serial("id").primaryKey(),
-    title: text("title").notNull(),
-    slug: text("slug").notNull(),
-    githubUrl: text("github_url").notNull(),
-    demoUrl: text("demo_url").notNull(),
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  slug: text("slug").notNull(),
 
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-    publishedAt: timestamp("published_at"),
+  githubUrl: text("github_url"),
+  demoUrl: text("demo_url"),
 
-    promotionId: integer("promotion_id")
-    .notNull()
-    .references(()=>promotions.id),
+  stacks: text("stacks"), // ← nouvelle colonne
 
-    adaProjectId: integer("ada_project_id")
-    .notNull()
-    .references(()=>ada_projects.id),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  publishedAt: timestamp("published_at"),
+
+ promotionId: integer("promotion_id")
+  .references(() => promotions.id),
+
+  adaProjectId: integer("ada_project_id")
+    .references(() => ada_projects.id),
 });

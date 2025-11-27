@@ -34,6 +34,7 @@ export async function getProjectBySlug(slug: string) {
       id: student_projects.id,
       title: student_projects.title,
       slug: student_projects.slug,
+      stacks: student_projects.stacks,  // ← AJOUT ICI
       publishedAt: student_projects.publishedAt,
       promotionName: promotions.name,
       adaProjectName: ada_projects.name,
