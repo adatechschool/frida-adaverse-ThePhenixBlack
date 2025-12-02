@@ -1,0 +1,16 @@
+export const STACKS = [
+  "Next.js",
+  "React",
+  "Tailwind CSS",
+  "Node.js",
+  "Express",
+  "PostgreSQL",
+  "Neon",
+  "Drizzle ORM",
+  "TypeScript",
+  "JavaScript",
+  "Prisma",
+  "MongoDB",
+  "Vercel",
+  "Docker",
+];

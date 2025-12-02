@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { getPublishedProjects } from "@/lib/queries";
-import { ProjectCard } from "./components/ProjectCard";
+import { ProjectCard } from "./components/ProjectCard"; // ← CORRECTION ICI
+
 export default async function HomePage() {
   const projects = await getPublishedProjects();
 
@@ -10,12 +11,13 @@ export default async function HomePage() {
     <main className="min-h-screen p-6 space-y-4">
       <header className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">Adaverse</h1>
-       <Link
-  href="/projects/new"
-  className="rounded-lg border px-4 py-2 text-sm hover:bg-neutral-100"
->
-  Proposer un projet
-</Link>
+
+        <Link
+          href="/projects/new"
+          className="rounded-lg border px-4 py-2 text-sm hover:bg-neutral-100"
+        >
+          Proposer un projet
+        </Link>
       </header>
 
       <section className="space-y-2">
@@ -33,7 +35,8 @@ export default async function HomePage() {
                 slug={project.slug}
                 adaProjectName={project.adaProjectName}
                 promotionName={project.promotionName}
-                publishedAt={project.publishedAt ? project.publishedAt.toISOString() : null}
+                stacks={project.stacks}
+                publishedAt={project.publishedAt}
               />
             ))}
           </ul>
